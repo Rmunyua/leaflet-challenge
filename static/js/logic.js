@@ -81,18 +81,11 @@ function createMap(earthquakes) {
     layers: [streetmap, earthquakes]
     });
 
-    // Create a layer control
-    // Pass in our baseMaps and overlayMaps
-    // Add the layer control to the map
-    L.control.layers(baseMaps, overlayMaps, {
-    collapsed: false
-    }).addTo(Map);
-
 
     //Add Legend
-var legend = L.control({position: 'bottomright'});
+  var legend = L.control({position: 'bottomright'});
 
-legend.onAdd = function (map) {
+  legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
         magnitudes = [0, 1, 2, 3, 4, 5],
@@ -108,11 +101,10 @@ legend.onAdd = function (map) {
       return div;
   };
 
-  legend.addTo(Map);
-
-  L.control.layers(baseMaps, overlayMaps, {
-    collapsed: false
-    }).addTo(myMap);
-
-};
-
+ // Create a layer control
+    // Pass in our baseMaps and overlayMaps
+    // Add the layer control to the map
+    L.control.layers(baseMaps, overlayMaps, {
+      collapsed: false
+      }).addTo(Map);
+}
