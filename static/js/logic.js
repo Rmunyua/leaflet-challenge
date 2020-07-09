@@ -6,8 +6,8 @@ function markerSize(magnitude) {
   return magnitude * 10;
 };
 function get_color(magnitude) {
-  return magnitude > 5 ? "#e34a33": magnitude > 4 ? "#2c7fb8": magnitude > 3 ? "#7fcdbb": 
-          magnitude > 2 ? "#fdbb84": magnitude > 1 ? "#fee8c8": "#edf8b1";
+  return magnitude > 5 ? "#e34a33": magnitude > 4 ? "#2c7fb8": magnitude > 3 ? "#fdbb84": 
+          magnitude > 2 ? "#7fcdbb": magnitude > 1 ? "#fee8c8": "#edf8b1";
         };
         
 // Perform a GET request to the query URL
