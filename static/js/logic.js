@@ -6,10 +6,10 @@ function markerSize(magnitude) {
   return magnitude * 10;
 };
 function get_color(magnitude) {
-  return magnitude > 5 ? "#e34a33": magnitude > 4 ? "#fdbb84": magnitude > 3 ? "#fee8c8": 
-          magnitude > 2 ? "#2c7fb8": magnitude > 1 ? "#7fcdbb": "#edf8b1";
+  return magnitude > 5 ? "#e34a33": magnitude > 4 ? "#2c7fb8": magnitude > 3 ? "#7fcdbb": 
+          magnitude > 2 ? "#fdbb84": magnitude > 1 ? "#fee8c8": "#edf8b1";
         };
-
+        
 // Perform a GET request to the query URL
 d3.json(url, function(Data) {
     console.log(url);
@@ -103,7 +103,7 @@ function createMap(earthquakes) {
   };
 
   legend.addTo(Map);
-  
+
  // Create a layer control
     // Pass in our baseMaps and overlayMaps
     // Add the layer control to the map
