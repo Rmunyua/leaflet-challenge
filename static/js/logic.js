@@ -26,7 +26,7 @@ function createFeatures(earthquake_data) {
         fillOpacity: 1,
         color: get_color(feature.properties.mag),
         fillColor: get_color(feature.properties.mag),
-        radius:  markerSize(feature.properties.mag*2500)
+        radius:  markerSize(feature.properties.mag*2000)
       });
     }
      // Create a GeoJSON layer containing the features array on the earthquakeData object
