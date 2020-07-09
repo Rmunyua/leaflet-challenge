@@ -1,6 +1,15 @@
 // Store API endpoint inside url
 var url="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
+// Define the color parameters 
+function markerSize(magnitude) {
+  return magnitude * 10;
+};
+function get_color(magnitude) {
+  return magnitude > 5 ? "#e34a33": magnitude > 4 ? "#fdbb84": magnitude > 3 ? "#fee8c8": 
+          magnitude > 2 ? "#2c7fb8": magnitude > 1 ? "#7fcdbb": "#edf8b1";
+        };
+
 // Perform a GET request to the query URL
 d3.json(url, function(Data) {
     console.log(url);
@@ -107,10 +116,3 @@ legend.onAdd = function (map) {
 
 };
 
-function get_color(magnitude) {
-  return magnitude > 5 ? "#e34a33": magnitude > 4 ? "#fdbb84": magnitude > 3 ? "#fee8c8": 
-          magnitude > 2 ? "#2c7fb8": magnitude > 1 ? "#7fcdbb": "#edf8b1"; // <= 1 default 
-        };
-    function markerSize(magnitude) {
-        return magnitude * 10;
-};
