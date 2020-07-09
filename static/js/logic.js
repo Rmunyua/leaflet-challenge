@@ -17,7 +17,7 @@ function createFeatures(earthquake_data) {
         fillOpacity: 1,
         color: get_color(feature.properties.mag),
         fillColor: get_color(feature.properties.mag),
-        radius:  markerSize(feature.properties.mag*2500) //increase the circle size by 2500
+        radius:  markerSize(feature.properties.mag*2500)
       });
     }
      // Create a GeoJSON layer containing the features array on the earthquakeData object
@@ -25,7 +25,7 @@ function createFeatures(earthquake_data) {
     var earthquakes = L.geoJSON(earthquake_data, {
       pointToLayer: onEachFeature
     });
-    console.log(earthquakes)
+  
     // Sending our earthquakes layer to the createMap function
     createMap(earthquakes);
 };
@@ -38,7 +38,7 @@ function createMap(earthquakes) {
     tileSize: 512,
     maxZoom: 18,
     zoomOffset: -1,
-    id: "mapbox/streets-v11",
+    id: "mapbox/streets-v8",
     accessToken: API_KEY
     });
 
@@ -78,6 +78,33 @@ function createMap(earthquakes) {
     L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
     }).addTo(Map);
+
+
+    //Add Legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        magnitudes = [0, 1, 2, 3, 4, 5],
+        
+        labels = ["0-1", "1-2", "2-3", "3-4", "4-5", "5+"];
+
+        for (var i = 0; i < magnitudes.length; i++) {
+          div.innerHTML +=
+              '<i style="background:' + markerColor(magnitudes[i] + 1) + '"></i> ' + 
+      + magnitudes[i] + (magnitudes[i + 1] ? ' - ' + magnitudes[i + 1] + '<br>' : ' + ');
+      }
+  
+      return div;
+  };
+
+  legend.addTo(Map);
+
+  L.control.layers(baseMaps, overlayMaps, {
+    collapsed: false
+    }).addTo(myMap);
+
 };
 
 function get_color(magnitude) {
@@ -87,25 +114,3 @@ function get_color(magnitude) {
     function markerSize(magnitude) {
         return magnitude * 10;
 };
-
-// //Add Legend
-// var legend = L.control({position: 'bottomright'});
-
-// legend.onAdd = function (map) {
-
-//     var div = L.DomUtil.create('div', 'info legend'),
-//         magnitudes = [0, 1, 2, 3, 4, 5],
-        
-//         labels = ["0-1", "1-2", "2-3", "3-4", "4-5", "5+"];
-
-//         for (var i = 0; i < magnitudes.length; i++) {
-//           div.innerHTML +=
-//               '<i style="background:' + markerColor(magnitudes[i] + 1) + '"></i> ' + 
-//       + magnitudes[i] + (magnitudes[i + 1] ? ' - ' + magnitudes[i + 1] + '<br>' : ' + ');
-//       }
-  
-//       return div;
-//   };
-
-//   legend.addTo(Map);
-
