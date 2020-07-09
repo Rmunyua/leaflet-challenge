@@ -82,7 +82,7 @@ function createMap(earthquakes) {
     });
 
 
-    //Add Legend
+  //   //Add Legend
   var legend = L.control({position: 'bottomright'});
 
   legend.onAdd = function (map) {
@@ -94,13 +94,16 @@ function createMap(earthquakes) {
 
         for (var i = 0; i < magnitudes.length; i++) {
           div.innerHTML +=
-              '<i style="background:' + markerColor(magnitudes[i] + 1) + '"></i> ' + 
+              '<i style="background:' + get_color(magnitudes[i] + 1) + '"></i> ' + 
       + magnitudes[i] + (magnitudes[i + 1] ? ' - ' + magnitudes[i + 1] + '<br>' : ' + ');
       }
   
       return div;
+
   };
 
+  legend.addTo(Map);
+  
  // Create a layer control
     // Pass in our baseMaps and overlayMaps
     // Add the layer control to the map
